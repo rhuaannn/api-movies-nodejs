@@ -12,5 +12,9 @@ movie_notesRoutes.get(
   "/",
   movieNotesController.show.bind(movieNotesController)
 );
+movie_notesRoutes.delete(
+  "/:id",
+  movieNotesController.deleteNotes.bind(movieNotesController)
+);
 
 module.exports = movie_notesRoutes;
