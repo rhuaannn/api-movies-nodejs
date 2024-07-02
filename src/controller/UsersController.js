@@ -73,6 +73,18 @@ class UsersController {
     await database.run("DELETE FROM users WHERE id = ?", [userId]);
     return res.status(200).json({ message: "Usuário deletado com sucesso." });
   }
+
+  async showUsers(req, res) {
+    const database = await sqliteConnection();
+
+    const checkUsers = await database.all("SELECT * FROM users");
+    if (checkUsers) {
+      const users = await database.all("SELECT * FROM users");
+      return res.status(200).json({ users });
+    } else {
+      return res.status(404).json({ error: "Não existe usuário cadastrado!" });
+    }
+  }
 }
 
 module.exports = UsersController;

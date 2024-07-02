@@ -2,7 +2,7 @@ require("express-async-errors");
 
 const express = require("express");
 
-const routes = require("./src/routes/users.routes");
+const routes = require("./src/routes");
 const database = require("./src/database/sqlite/index.js");
 
 const app = express();
