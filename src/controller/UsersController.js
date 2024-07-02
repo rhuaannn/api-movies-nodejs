@@ -69,6 +69,7 @@ class UsersController {
     if (!existUserDelete) {
       res.status(404).json({ error: "Nao existe esse usuario!" });
     }
+    await database.run("DELETE FROM movie_notes WHERE user_id = ?", [userId]);
 
     await database.run("DELETE FROM users WHERE id = ?", [userId]);
     return res.status(200).json({ message: "Usuário deletado com sucesso." });

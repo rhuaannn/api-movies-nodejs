@@ -29,6 +29,13 @@ class MovieNotesController {
       return res.status(500).json({ error: "Failed to create movie note." });
     }
   }
+  async show(req, res) {
+    const database = await sqliteConnection();
+
+    const note = await database.all("SELECT * FROM movie_notes");
+
+    return res.status(200).json(note);
+  }
 }
 
 module.exports = MovieNotesController;

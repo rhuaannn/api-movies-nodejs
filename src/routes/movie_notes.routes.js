@@ -8,5 +8,9 @@ movie_notesRoutes.post(
   "/:user_id",
   movieNotesController.create.bind(movieNotesController)
 );
+movie_notesRoutes.get(
+  "/",
+  movieNotesController.show.bind(movieNotesController)
+);
 
 module.exports = movie_notesRoutes;
