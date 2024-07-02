@@ -37,15 +37,17 @@ class MovieNotesController {
     return res.status(200).json(note);
   }
 
-  async deleteNotes(req, res){
+  async deleteNotes(req, res) {
     const database = await sqliteConnection();
-    const {id} = req.params;
+    const { id } = req.params;
 
-    const notes = await database.all("SELECT * FROM movie_notes WHERE id = ?", [id]);
-    if(notes){
-      await database.run("DELETE FROM movie_notes WHERE id = ?",[id])
+    const notes = await database.all("SELECT * FROM movie_notes WHERE id = ?", [
+      id,
+    ]);
+    if (notes) {
+      await database.run("DELETE FROM movie_notes WHERE id = ?", [id]);
 
-      return res.status(200).json()
+      return res.status(200).json();
     }
   }
 }
